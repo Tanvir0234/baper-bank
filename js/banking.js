@@ -7,6 +7,15 @@ function getInputValue(inputId){
      return inputAmount;
 }
 
+function updateTotalField(totalFieldId,amount){
+    const totalElement = document.getElementById(totalFieldId);
+    const amountText = totalElement.innerText;
+    const previousAmount = parseFloat(amountText);
+    // Update deposit and previous + present------------------------
+    const totalAmount = previousAmount + amount;
+    totalElement.innerText = totalAmount;
+}
+
 
 document.getElementById('deposit-button').addEventListener('click',function(){
     /*
@@ -18,7 +27,9 @@ document.getElementById('deposit-button').addEventListener('click',function(){
     */
    //call function------
     const depositInputAmmount = getInputValue('deposit-input');
+    updateTotalField('deposit-ammount',depositInputAmmount);
 
+ /*  
     const previousAmount = document.getElementById('deposit-ammount');
     //previousAmount.innerText = inputAmountText;
     const previousAmountText = previousAmount.innerText;
@@ -26,6 +37,7 @@ document.getElementById('deposit-button').addEventListener('click',function(){
     // Update deposit and previous + present------------------------
     const totalDeposit = previousDepositAmount + depositInputAmmount;
     previousAmount.innerText = totalDeposit;
+    */
 /*
     //clear deposit input field
     depositInput.value = '';
@@ -47,16 +59,23 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawInputText = withdrawInput.value;
     const withdrawInputAmount = parseFloat(withdrawInputText);
 */
-const withdrawInputAmount = getInputValue('withdraw-input')
+
+    const withdrawInputAmount = getInputValue('withdraw-input')
+    updateTotalField('withdraw-ammount',withdrawInputAmount);
+/*    
     const preWithdrawAmount = document.getElementById('withdraw-ammount');
     const withdrawAmountText = preWithdrawAmount.innerText;
     const preWithdrawInputAmount = parseFloat(withdrawAmountText);
 
     const totalWithdraw = preWithdrawInputAmount + withdrawInputAmount;
     preWithdrawAmount.innerText = totalWithdraw;
-
+*/
     //update total balance=total balace - withdraw----
     const balanceAmount = document.getElementById('balance-ammount');
+    
+    
+    
+    
     const preBalanceText =balanceAmount.innerText;
     const preBalanceAmount =parseFloat(preBalanceText);
     const totalBalance = preBalanceAmount - withdrawInputAmount;
