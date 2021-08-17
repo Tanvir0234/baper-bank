@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Baper Bank</title>
+    
+</head>
+<body>
+    <header>
+       <h1 class="text-5xl text-center mt-8">Wellcome to <span class="text-blue-400">Baper Bank</span></h1>
+    </header>
+    <main>
+        <section class="grid grid-cols-3 text-white gap-4  ">
+            <div class="bg-green-500 p-8 text-center m-8 ">
+                 <h2 class="text-3xl ">Deposit</h2>
+                 <h1 class="text-4xl">$<span id="deposit-ammount">00</span> </h1>
+            </div>
+            <div class="bg-yellow-500 p-8 text-center m-8">
+                 <h2 class="text-3xl">Withdraw</h2>
+                 <h1 class="text-4xl">$<span id="withdraw-ammount">00</span> </h1>
+            </div>
+            <div class="bg-blue-400 p-8 text-center m-8">
+                 <h2 class="text-3xl">Balance</h2>
+                 <h1 class="text-4xl">$<span id="balance-ammount">1240</span> </h1>
+            </div>
+        </section>
+        <section class="grid grid-cols-2 text-white gap-4 m-5">
+            <div class="bg-purple-200 text-center p-12  ">
+              <input id="deposit-input" type="text" placeholder="Enter Deposit $"  class="border rounded text-black">
+                <br>
+                <button id="deposit-button" class="bg-yellow-500 p-3 mt-3  font-semibold border rounded">Deposit</button>
+            </div>
+            <div class="bg-green-200 text-center p-12  ">
+              <input id="withdraw-input" type="text" placeholder="Enter Withdraw $" class="border rounded text-black">
+                <br>
+                <button id="withdraw-button" class="bg-yellow-500 p-3 mt-3  font-semibold border rounded">Withdraw</button>
+            </div>
+
+        </section>
+    </main>
+<script src="js/banking.js"></script>
+    
+</body>
+</html>
