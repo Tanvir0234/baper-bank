@@ -16,6 +16,20 @@ function updateTotalField(totalFieldId,amount){
     totalElement.innerText = totalAmount;
 }
 
+function updateBalance(amount,isAdd){
+    const balanceAmount = document.getElementById('balance-ammount');
+const preBalanceText =balanceAmount.innerText;
+const preBalanceAmount =parseFloat(preBalanceText);
+
+if(isAdd==true){
+    balanceAmount.innerText = preBalanceAmount + amount;
+}
+else{
+    balanceAmount.innerText = preBalanceAmount - amount;
+}
+
+}
+
 
 document.getElementById('deposit-button').addEventListener('click',function(){
     /*
@@ -28,6 +42,7 @@ document.getElementById('deposit-button').addEventListener('click',function(){
    //call function------
     const depositInputAmmount = getInputValue('deposit-input');
     updateTotalField('deposit-ammount',depositInputAmmount);
+    updateBalance(depositInputAmmount,true);
 
  /*  
     const previousAmount = document.getElementById('deposit-ammount');
@@ -44,11 +59,13 @@ document.getElementById('deposit-button').addEventListener('click',function(){
 */
 
 //update deposit Balance--------------------------------
+/*
 const balanceAmount = document.getElementById('balance-ammount');
 const preBalanceText =balanceAmount.innerText;
 const preBalanceAmount =parseFloat(preBalanceText);
 const totalBalance = preBalanceAmount + depositInputAmmount;
 balanceAmount.innerText =totalBalance;
+*/
 
 })
 
@@ -70,16 +87,19 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     const totalWithdraw = preWithdrawInputAmount + withdrawInputAmount;
     preWithdrawAmount.innerText = totalWithdraw;
 */
-    //update total balance=total balace - withdraw----
+   
+   
+    updateBalance(withdrawInputAmount,false);
+    
+    
+     //update total balance=total balace - withdraw---
+     /*
     const balanceAmount = document.getElementById('balance-ammount');
-    
-    
-    
-    
     const preBalanceText =balanceAmount.innerText;
     const preBalanceAmount =parseFloat(preBalanceText);
     const totalBalance = preBalanceAmount - withdrawInputAmount;
     balanceAmount.innerText =totalBalance;
+    */
 /*
    //Clear Withdraw input field
    withdrawInput.value = '';
