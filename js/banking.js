@@ -15,12 +15,21 @@ function updateTotalField(totalFieldId,amount){
     const totalAmount = previousAmount + amount;
     totalElement.innerText = totalAmount;
 }
+function getCurrentBalance(){
+    const balanceAmount = document.getElementById('balance-ammount');
+    const preBalanceText =balanceAmount.innerText;
+    const preBalanceAmount =parseFloat(preBalanceText);
+    return preBalanceAmount;
+}
 
 function updateBalance(amount,isAdd){
     const balanceAmount = document.getElementById('balance-ammount');
-const preBalanceText =balanceAmount.innerText;
-const preBalanceAmount =parseFloat(preBalanceText);
-
+    
+    /*
+    const preBalanceText =balanceAmount.innerText;
+    const preBalanceAmount =parseFloat(preBalanceText);
+    */
+   preBalanceAmount = getCurrentBalance();
 if(isAdd==true){
     balanceAmount.innerText = preBalanceAmount + amount;
 }
@@ -41,8 +50,11 @@ document.getElementById('deposit-button').addEventListener('click',function(){
     */
    //call function------
     const depositInputAmmount = getInputValue('deposit-input');
-    updateTotalField('deposit-ammount',depositInputAmmount);
-    updateBalance(depositInputAmmount,true);
+    if(depositInputAmmount > 0){
+        updateTotalField('deposit-ammount',depositInputAmmount);
+        updateBalance(depositInputAmmount,true);
+    }
+    
 
  /*  
     const previousAmount = document.getElementById('deposit-ammount');
@@ -77,8 +89,16 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawInputAmount = parseFloat(withdrawInputText);
 */
 
-    const withdrawInputAmount = getInputValue('withdraw-input')
-    updateTotalField('withdraw-ammount',withdrawInputAmount);
+    const withdrawInputAmount = getInputValue('withdraw-input');
+    const preBalanceAmount = getCurrentBalance();
+    if(withdrawInputAmount > 0 && preBalanceAmount > withdrawInputAmount){
+        updateTotalField('withdraw-ammount',withdrawInputAmount);
+        updateBalance(withdrawInputAmount,false);
+    }
+    else{
+        console.log('Your current balance is lower then you want');
+    }
+   
 /*    
     const preWithdrawAmount = document.getElementById('withdraw-ammount');
     const withdrawAmountText = preWithdrawAmount.innerText;
@@ -89,7 +109,7 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
 */
    
    
-    updateBalance(withdrawInputAmount,false);
+    
     
     
      //update total balance=total balace - withdraw---
